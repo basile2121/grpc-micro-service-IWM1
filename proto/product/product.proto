@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package product;
+
+message Product {
+  int32 id = 1;
+  string name = 2;
+  int32 code = 3;
+  int32 price = 4;
+  string origin = 5;
+}
+
+service ProductCRUDService {
+  rpc GetProduct (GetProductRequest) returns (GetProductResponse);
+  rpc AddProduct (AddProductRequest) returns (AddProductResponse);
+  rpc UpdateProduct (UpdateProductRequest) returns (UpdateProductResponse);
+  rpc DeleteProduct (DeleteProductRequest) returns (DeleteProductResponse);
+}
+
+message GetProductRequest {
+  int32 id = 1;
+  string name = 2;
+  int32 code = 3;
+}
+
+message GetProductResponse {
+  repeated Product product = 1;
+}
+
+message AddProductRequest {
+  string name = 1;
+  int32 code = 2;
+  int32 price = 3;
+  string origin = 4;
+}
+
+message AddProductResponse {
+  Product product = 1;
+}
+
+message UpdateProductRequest {
+  int32 id = 1;
+  string name = 2;
+  int32 code = 3;
+  int32 price = 4;
+  string origin = 5;
+}
+
+message UpdateProductResponse{
+  Product hero = 1;
+}
+
+message DeleteProductRequest{
+  int32 id = 1;
+}
+message DeleteProductResponse {
+  Product hero = 1;
+}
+
+
