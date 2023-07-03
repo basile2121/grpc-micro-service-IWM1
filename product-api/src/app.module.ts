@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GrpcReflectionModule } from 'nestjs-grpc-reflection';
 import {grpcConfig} from "./grpc.config";
-import {TodoModule} from "./product/product.module";
+import {ProductModule } from "./product/product.module";
 
 @Module({
-  imports: [GrpcReflectionModule.register(grpcConfig), TodoModule],
+  imports: [GrpcReflectionModule.register(grpcConfig), ProductModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -11,7 +11,7 @@ export const grpcConfig = addReflectionToGrpcConfig({
     options: {
         url: '0.0.0.0:3010',
         package: PRODUCT_PACKAGE_NAME,
-        protoPath: join('C:\\Users\\basil\\OneDrive\\Documents\\IW M1\\grpc-micro-service-IWM1\\product-api\\src\\proto\\product\\product.proto'),
+        protoPath: join(__dirname, 'proto/product/product.proto'),
     },
 }) as GrpcOptions;
 
