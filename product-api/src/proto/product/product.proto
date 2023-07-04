@@ -24,7 +24,7 @@ message GetProductRequest {
 }
 
 message GetProductResponse {
-  repeated Product product = 1;
+  repeated Product products = 1;
 }
 
 message AddProductRequest {
@@ -45,15 +45,16 @@ message UpdateProductRequest {
   int32 price = 4;
   string origin = 5;
 }
+
 message UpdateProductResponse{
-  Product hero = 1;
+  Product product = 1;
 }
 
 message DeleteProductRequest{
   int32 id = 1;
 }
 message DeleteProductResponse {
-  Product hero = 1;
+  Product product = 1;
 }
 
 

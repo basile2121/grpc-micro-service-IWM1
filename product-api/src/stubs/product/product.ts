@@ -20,7 +20,7 @@ export interface GetProductRequest {
 }
 
 export interface GetProductResponse {
-  product?: Product[];
+  products?: Product[];
 }
 
 export interface AddProductRequest {
@@ -43,7 +43,7 @@ export interface UpdateProductRequest {
 }
 
 export interface UpdateProductResponse {
-  hero?: Product;
+  product?: Product;
 }
 
 export interface DeleteProductRequest {
@@ -51,7 +51,7 @@ export interface DeleteProductRequest {
 }
 
 export interface DeleteProductResponse {
-  hero?: Product;
+  product?: Product;
 }
 
 export const PRODUCT_PACKAGE_NAME = "product";
