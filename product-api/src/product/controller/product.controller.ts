@@ -13,8 +13,9 @@ import {
   UpdateProductResponse,
 } from '../../stubs/product/product';
 import { Product } from '../../stubs/product/product';
-import { Metadata } from '@grpc/grpc-js';
+import {Metadata, status} from '@grpc/grpc-js';
 import { Observable } from 'rxjs';
+import {RpcException} from "@nestjs/microservices";
 
 @Controller()
 @ProductCRUDServiceControllerMethods()
@@ -27,7 +28,7 @@ export class ProductController implements ProductCRUDServiceController {
     metadata?: Metadata,
   ): Promise<AddProductResponse> {
     const product = await this.ProductService.createProduct(request as any);
-
+    // new RpcException({message: 'Test', code: status.NOT_FOUND})
     return { product };
   }
 
