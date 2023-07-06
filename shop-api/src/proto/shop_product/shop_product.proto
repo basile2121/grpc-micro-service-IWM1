@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package shop_product;
+
+message ShopProduct {
+    int32 id = 1;
+    int32 shop_id = 2;
+    int32 product_id = 3;
+}
+
+service ShopProductCRUDService {
+    rpc AddShopProduct(ShopProduct) returns (ShopProduct) {}
+  }
