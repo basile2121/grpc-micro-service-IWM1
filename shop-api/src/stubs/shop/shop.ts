@@ -9,6 +9,7 @@ export interface Shop {
   id?: number;
   name?: string;
   address?: string;
+  productId?: number;
 }
 
 export interface GetShopRequest {
@@ -48,6 +49,15 @@ export interface DeleteShopResponse {
   shop?: Shop;
 }
 
+export interface AddShopProductRequest {
+  id?: number;
+  productId?: number;
+}
+
+export interface AddShopProductResponse {
+  shop?: Shop;
+}
+
 export const SHOP_PACKAGE_NAME = "shop";
 
 export interface ShopCRUDServiceClient {
@@ -58,6 +68,8 @@ export interface ShopCRUDServiceClient {
   updateShop(request: UpdateShopRequest, metadata?: Metadata): Observable<UpdateShopResponse>;
 
   deleteShop(request: DeleteShopRequest, metadata?: Metadata): Observable<DeleteShopResponse>;
+
+  addShopProduct(request: AddShopProductRequest, metadata?: Metadata): Observable<AddShopProductResponse>;
 }
 
 export interface ShopCRUDServiceController {
@@ -80,11 +92,16 @@ export interface ShopCRUDServiceController {
     request: DeleteShopRequest,
     metadata?: Metadata,
   ): Promise<DeleteShopResponse> | Observable<DeleteShopResponse> | DeleteShopResponse;
+
+  addShopProduct(
+    request: AddShopProductRequest,
+    metadata?: Metadata,
+  ): Promise<AddShopProductResponse> | Observable<AddShopProductResponse> | AddShopProductResponse;
 }
 
 export function ShopCRUDServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["getShop", "addShop", "updateShop", "deleteShop"];
+    const grpcMethods: string[] = ["getShop", "addShop", "updateShop", "deleteShop", "addShopProduct"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("ShopCRUDService", method)(constructor.prototype[method], method, descriptor);

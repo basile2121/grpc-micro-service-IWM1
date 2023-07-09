@@ -1,4 +1,4 @@
-import { Controller, Delete, Post } from '@nestjs/common';
+import { Controller, Delete, Post, Get, Put } from '@nestjs/common';
 import { ShopService } from '../service/shop.service';
 import {
   AddShopRequest,
@@ -11,8 +11,10 @@ import {
   ShopCRUDServiceControllerMethods,
   UpdateShopRequest,
   UpdateShopResponse,
+  AddShopProductRequest,
+  AddShopProductResponse,
 } from '../../stubs/shop/shop';
-import { Product } from '../../stubs/product/product';
+import { Shop } from '../../stubs/shop/shop';
 import {Metadata, status} from '@grpc/grpc-js';
 import { Observable } from 'rxjs';
 import {RpcException} from "@nestjs/microservices";
@@ -49,12 +51,14 @@ export class ShopController implements ShopCRUDServiceController {
         }
 
     }
-
+    @Get()
     async getShop(
         request: GetShopRequest,
         metadata?: Metadata,
     ): Promise<GetShopResponse> {
-        const shops: Product[] = await this.ShopService.shops({});
+        const shops: Shop[] = await this.ShopService.shops({});
+        const product = await this.ShopService.findProduct(request)
+        console.log(product)
         return { shops: shops };
     }
 
@@ -62,9 +66,22 @@ export class ShopController implements ShopCRUDServiceController {
         request: UpdateShopRequest,
         metadata?: Metadata,
     ): Promise<UpdateShopResponse> {
-        const shop: Product = await this.ShopService.updateShop({
+        const shop: Shop = await this.ShopService.updateShop({
             where: { id: Number(request.id) },
             data: request,
+        });
+        return { shop };
+    }
+
+    @Post()
+    async addShopProduct(
+        request: AddShopProductRequest,
+        metadata?: Metadata,
+    ): Promise<AddShopProductResponse> {
+        console.log(request);
+        const shop: Shop = await this.ShopService.createShopProduct({
+            where: { id: Number(request.id) },
+            data: { productId: Number(request.productId) },
         });
         return { shop };
     }
