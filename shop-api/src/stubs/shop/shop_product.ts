@@ -3,7 +3,7 @@ import { Metadata } from "@grpc/grpc-js";
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
 
-export const protobufPackage = "shop_product";
+export const protobufPackage = "shop";
 
 export interface ShopProduct {
   id?: number;
@@ -46,7 +46,7 @@ export interface DeleteShopProductResponse {
   shopProduct?: ShopProduct;
 }
 
-export const SHOP_PRODUCT_PACKAGE_NAME = "shop_product";
+export const SHOP_PACKAGE_NAME = "shop";
 
 export interface ShopProductCRUDServiceClient {
   addShopProduct(request: AddShopProductRequest, metadata?: Metadata): Observable<AddShopProductResponse>;

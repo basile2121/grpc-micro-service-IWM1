@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package shop_product;
+package shop;
 
 message ShopProduct {
     int32 id = 1;
