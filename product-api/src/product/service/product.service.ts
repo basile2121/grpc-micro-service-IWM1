@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { Product } from '../../stubs/product/product';
 import { Prisma } from '@prisma/client';
 import { PrismaService } from '../../prisma.service';
+import { RpcException } from '@nestjs/microservices';
+import { CustomException } from '../custom.exception';
 
 @Injectable()
 export class ProductService {
@@ -33,7 +35,7 @@ export class ProductService {
   }
 
   async createProduct(data: Prisma.ProductCreateInput): Promise<Product> {
-    return this.prisma.product.create({
+    return await this.prisma.product.create({
       data,
     });
   }

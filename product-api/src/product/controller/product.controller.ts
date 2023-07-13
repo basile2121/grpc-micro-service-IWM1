@@ -1,4 +1,4 @@
-import { Controller, Delete, Post } from '@nestjs/common';
+import { Controller, Delete, HttpStatus, Post } from '@nestjs/common';
 import { ProductService } from '../service/product.service';
 import {
   AddProductRequest,
@@ -13,9 +13,9 @@ import {
   UpdateProductResponse,
 } from '../../stubs/product/product';
 import { Product } from '../../stubs/product/product';
-import {Metadata, status} from '@grpc/grpc-js';
+import { Metadata, status } from '@grpc/grpc-js';
 import { Observable } from 'rxjs';
-import {RpcException} from "@nestjs/microservices";
+import { RpcException } from '@nestjs/microservices';
 
 @Controller()
 @ProductCRUDServiceControllerMethods()
@@ -27,9 +27,17 @@ export class ProductController implements ProductCRUDServiceController {
     request: AddProductRequest,
     metadata?: Metadata,
   ): Promise<AddProductResponse> {
-    const product = await this.ProductService.createProduct(request as any);
+    try {
+      const product = await this.ProductService.createProduct(request as any);
+      return { product };
+    } catch (error) {
+      throw new RpcException({
+        message: 'No name provided',
+        code: HttpStatus.BAD_REQUEST,
+        status: status.INVALID_ARGUMENT,
+      });
+    }
     // new RpcException({message: 'Test', code: status.NOT_FOUND})
-    return { product };
   }
 
   @Delete()
@@ -37,27 +45,41 @@ export class ProductController implements ProductCRUDServiceController {
     request: DeleteProductRequest,
     metadata?: Metadata,
   ): Promise<DeleteProductResponse> {
-    const product = await this.ProductService.deleteProduct({ id: request.id });
+    try {
+      const product = await this.ProductService.deleteProduct({
+        id: request.id,
+      });
 
-    return { product };
+      return { product };
+    } catch (error) {
+      throw new RpcException(error);
+    }
   }
 
   async getProduct(
     request: GetProductRequest,
     metadata?: Metadata,
   ): Promise<GetProductResponse> {
-    const products: Product[] = await this.ProductService.products({});
-    return { products: products };
+    try {
+      const products: Product[] = await this.ProductService.products({});
+      return { products: products };
+    } catch (error) {
+      throw new RpcException(error);
+    }
   }
 
   async updateProduct(
     request: UpdateProductRequest,
     metadata?: Metadata,
   ): Promise<UpdateProductResponse> {
-    const product: Product = await this.ProductService.updateProduct({
-      where: { id: Number(request.id) },
-      data: request,
-    });
-    return { product };
+    try {
+      const product: Product = await this.ProductService.updateProduct({
+        where: { id: Number(request.id) },
+        data: request,
+      });
+      return { product };
+    } catch (error) {
+      throw new RpcException(error);
+    }
   }
 }
