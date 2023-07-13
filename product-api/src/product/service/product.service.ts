@@ -12,7 +12,7 @@ export class ProductService {
   async product(
     ProductWhereUniqueInput: Prisma.ProductWhereUniqueInput,
   ): Promise<Product | null> {
-    return this.prisma.product.findUnique({
+    return await this.prisma.product.findUnique({
       where: ProductWhereUniqueInput,
     });
   }
@@ -25,7 +25,7 @@ export class ProductService {
     orderBy?: Prisma.ProductOrderByWithRelationInput;
   }): Promise<Product[]> {
     const { skip, take, cursor, where, orderBy } = params;
-    return this.prisma.product.findMany({
+    return await this.prisma.product.findMany({
       skip,
       take,
       cursor,
@@ -45,14 +45,14 @@ export class ProductService {
     data: Prisma.ProductUpdateInput;
   }): Promise<Product> {
     const { data, where } = params;
-    return this.prisma.product.update({
+    return await this.prisma.product.update({
       data,
       where,
     });
   }
 
   async deleteProduct(where: Prisma.ProductWhereUniqueInput): Promise<Product> {
-    return this.prisma.product.delete({
+    return await this.prisma.product.delete({
       where,
     });
   }
