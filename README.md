@@ -18,3 +18,15 @@ Pour créer la base et le schéma de donnée :
 
 Lors d'une modification des fichiers prisma il est important de faire la commande :
 `npx prisma generate`, pour regénérer les tables
+
+
+## Authentification 
+
+Lancer le npm i
+
+Configurer les .env
+
+
+Lancer l'api auth-api : `nest start --watch`
+
+Lancer l'api user-api : `nest start --watch`
