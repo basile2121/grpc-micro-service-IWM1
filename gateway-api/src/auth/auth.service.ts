@@ -7,7 +7,7 @@ import {AUTH_PACKAGE_NAME, AUTH_SERVICE_NAME, AuthServiceClient, ValidateRespons
 export class AuthService implements OnModuleInit {
   private authService: AuthServiceClient;
 
-  constructor(@Inject(AUTH_PACKAGE_NAME) private client: ClientGrpc) {}
+  constructor(@Inject(AUTH_SERVICE_NAME) private client: ClientGrpc) {}
 
   onModuleInit() {
     this.authService =

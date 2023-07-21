@@ -3,8 +3,16 @@ import { ClientGrpc } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 import {
     AddProductRequest,
-    AddProductResponse, DeleteProductRequest, DeleteProductResponse, GetProductRequest, GetProductResponse,
-    PRODUCT_CR_UD_SERVICE_NAME, ProductCRUDServiceClient, UpdateProductRequest, UpdateProductResponse
+    AddProductResponse,
+    DeleteProductRequest,
+    DeleteProductResponse,
+    GetProductRequest,
+    GetProductResponse,
+    PRODUCT_CR_UD_SERVICE_NAME,
+    PRODUCT_PACKAGE_NAME,
+    ProductCRUDServiceClient,
+    UpdateProductRequest,
+    UpdateProductResponse
 } from '../stubs/product/product';
 import { Request } from 'express';
 import {GrpcAuthGuard} from "../auth/auth.guard";

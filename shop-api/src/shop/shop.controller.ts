@@ -1,5 +1,5 @@
 import { Controller, Delete, Post, Get, Put } from '@nestjs/common';
-import { ShopService } from '../service/shop.service';
+import { ShopService } from './shop.service';
 import {
   AddShopRequest,
   AddShopResponse,
@@ -13,10 +13,9 @@ import {
   UpdateShopResponse,
   AddShopProductRequest,
   AddShopProductResponse,
-} from '../../stubs/shop/shop';
-import { Shop } from '../../stubs/shop/shop';
+} from '../stubs/shop/shop';
+import { Shop } from '../stubs/shop/shop';
 import {Metadata, status} from '@grpc/grpc-js';
-import { Observable } from 'rxjs';
 import {RpcException} from "@nestjs/microservices";
 
 @Controller()
@@ -35,7 +34,6 @@ export class ShopController implements ShopCRUDServiceController {
         }catch(e){
             throw new RpcException({message: e.message, code: status.NOT_FOUND})
         }
-       
     }
 
     @Delete()

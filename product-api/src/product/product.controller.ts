@@ -1,5 +1,5 @@
 import { Controller, Delete, Post } from '@nestjs/common';
-import { ProductService } from '../service/product.service';
+import { ProductService } from './product.service';
 import {
   AddProductRequest,
   AddProductResponse,
@@ -11,8 +11,8 @@ import {
   ProductCRUDServiceControllerMethods,
   UpdateProductRequest,
   UpdateProductResponse,
-} from '../../stubs/product/product';
-import { Product } from '../../stubs/product/product';
+} from '../stubs/product/product';
+import { Product } from '../stubs/product/product';
 import {Metadata, status} from '@grpc/grpc-js';
 import { Observable } from 'rxjs';
 import {RpcException} from "@nestjs/microservices";

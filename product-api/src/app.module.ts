@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { GrpcReflectionModule } from 'nestjs-grpc-reflection';
 import {grpcConfig} from "./grpc.config";
 import {ProductModule } from "./product/product.module";
+import {ProductService} from "./product/product.service";
 
 @Module({
   imports: [GrpcReflectionModule.register(grpcConfig), ProductModule],

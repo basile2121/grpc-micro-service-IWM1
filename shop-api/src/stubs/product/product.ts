@@ -6,52 +6,52 @@ import { Observable } from "rxjs";
 export const protobufPackage = "product";
 
 export interface Product {
-  id?: number;
-  name?: string;
-  code?: number;
-  price?: number;
-  origin?: string;
+  id?: number | undefined;
+  name?: string | undefined;
+  code?: number | undefined;
+  price?: number | undefined;
+  origin?: string | undefined;
 }
 
 export interface GetProductRequest {
-  id?: number;
-  name?: string;
-  code?: number;
+  id?: number | undefined;
+  name?: string | undefined;
+  code?: number | undefined;
 }
 
 export interface GetProductResponse {
-  products?: Product[];
+  products?: Product[] | undefined;
 }
 
 export interface AddProductRequest {
-  name?: string;
-  code?: number;
-  price?: number;
-  origin?: string;
+  name?: string | undefined;
+  code?: number | undefined;
+  price?: number | undefined;
+  origin?: string | undefined;
 }
 
 export interface AddProductResponse {
-  product?: Product;
+  product?: Product | undefined;
 }
 
 export interface UpdateProductRequest {
-  id?: number;
-  name?: string;
-  code?: number;
-  price?: number;
-  origin?: string;
+  id?: number | undefined;
+  name?: string | undefined;
+  code?: number | undefined;
+  price?: number | undefined;
+  origin?: string | undefined;
 }
 
 export interface UpdateProductResponse {
-  product?: Product;
+  product?: Product | undefined;
 }
 
 export interface DeleteProductRequest {
-  id?: number;
+  id?: number | undefined;
 }
 
 export interface DeleteProductResponse {
-  product?: Product;
+  product?: Product | undefined;
 }
 
 export const PRODUCT_PACKAGE_NAME = "product";

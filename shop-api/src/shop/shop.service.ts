@@ -1,16 +1,15 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Shop } from '../../stubs/shop/shop';
-import { Prisma } from '@prisma/client';
-import { PrismaService } from '../../prisma.service';
-import { GetProductRequest, GetProductResponse, PRODUCT_CR_UD_SERVICE_NAME, PRODUCT_PACKAGE_NAME, Product, ProductCRUDServiceClient } from 'src/stubs/product/product';
-import { Metadata } from '@grpc/grpc-js';
+import { Shop } from '../stubs/shop/shop';
+import { PrismaService } from '../prisma.service';
+import { GetProductRequest, GetProductResponse, PRODUCT_CR_UD_SERVICE_NAME, PRODUCT_PACKAGE_NAME, ProductCRUDServiceClient } from 'src/stubs/product/product';
 import { ClientGrpc } from '@nestjs/microservices';
-import { firstValueFrom } from 'rxjs';
+import {firstValueFrom} from "rxjs";
+import {Prisma} from "@prisma/client";
 
 @Injectable()
 export class ShopService {
   private productService: ProductCRUDServiceClient;
-  constructor(@Inject(PRODUCT_PACKAGE_NAME) private client: ClientGrpc, private prisma: PrismaService) {}
+  constructor(@Inject(PRODUCT_CR_UD_SERVICE_NAME) private client: ClientGrpc, private prisma: PrismaService) {}
   onModuleInit() {
     this.productService =
       this.client.getService<ProductCRUDServiceClient>(PRODUCT_CR_UD_SERVICE_NAME);

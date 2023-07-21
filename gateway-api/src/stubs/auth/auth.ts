@@ -6,15 +6,15 @@ import { Observable } from "rxjs";
 export const protobufPackage = "auth";
 
 export interface LoginRequest {
-  email?: string;
-  password?: string;
-  ip?: string;
+  email?: string | undefined;
+  password?: string | undefined;
+  ip?: string | undefined;
 }
 
 export interface LoginResponse {
-  refreshToken?: string;
-  jwt?: string;
-  status?: LoginResponse_STATUS;
+  refreshToken?: string | undefined;
+  jwt?: string | undefined;
+  status?: LoginResponse_STATUS | undefined;
 }
 
 export enum LoginResponse_STATUS {
@@ -26,26 +26,26 @@ export enum LoginResponse_STATUS {
 }
 
 export interface RefreshTokenRequest {
-  refreshToken?: string;
-  ip?: string;
+  refreshToken?: string | undefined;
+  ip?: string | undefined;
 }
 
 export interface RefreshTokenResponse {
-  refreshToken?: string;
-  jwt?: string;
+  refreshToken?: string | undefined;
+  jwt?: string | undefined;
 }
 
 export interface ValidateRequest {
   /** Add role here */
-  jwt?: string;
+  jwt?: string | undefined;
 }
 
 export interface ValidateResponse {
-  ok?: boolean;
-  userId?: string;
-  userEmail?: string;
-  userRole?: number;
-  internal?: boolean;
+  ok?: boolean | undefined;
+  userId?: string | undefined;
+  userEmail?: string | undefined;
+  userRole?: number | undefined;
+  internal?: boolean | undefined;
 }
 
 export const AUTH_PACKAGE_NAME = "auth";

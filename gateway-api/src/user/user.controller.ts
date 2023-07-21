@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {
     FindRequest, FindResponse,
     RegisterRequest,
-    RegisterResponse, UpdateRequest, UpdateResponse,
+    RegisterResponse, UpdateRequest, UpdateResponse, USER_PACKAGE_NAME,
     USER_SERVICE_NAME,
     UserServiceClient,
 } from "../stubs/user/user";
