@@ -212,9 +212,17 @@ npx prisma generate
 
 ## Test Postman
 
-Pour tester nous avons fais des collections importable dans POSTMAN : 
+Pour tester nous avons fais des collections Postman. 
 
-Collection Micro service : 
+Celle de gateway-api : 
 
-Collection GateWayAPI : 
+Pour la collection des micro-services nous ne pouvons pas l'exporter mais si vous le souhaiter nous pouvons vous la partagez par mail. Contactez-nous.
+
+### Quelques captures d'écrans :
+
+
+
+### Problèmes : 
+
+Nous avons tout tester et tout fonctionne sur nos postes si vous avez un soucis hésitez pas à nous demander
 
