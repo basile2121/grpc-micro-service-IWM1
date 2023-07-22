@@ -10,7 +10,7 @@ Pour ce projet nous avons décider de repartir de 0 pour mieux comprendre le fon
 
 **Spécialité :** IW
 
-**Membres du groupe :** 
+**Membres du groupe 12 :** 
 
 - Basile REGNAULT
 - Bilal BOUTERBIAT
