@@ -214,7 +214,7 @@ npx prisma generate
 
 Pour tester nous avons fais des collections Postman. 
 
-Celle de gateway-api : (https://github.com/basile2121/grpc-micro-service-IWM1/blob/develop/doc/"MicroService Gateway".postman_collection.json)
+Celle de gateway-api : https://github.com/basile2121/grpc-micro-service-IWM1/blob/develop/doc/MicroService Gateway.postman_collection.json
 
 Pour la collection des micro-services nous ne pouvons pas l'exporter mais si vous le souhaiter nous pouvons vous la partagez par mail. Contactez-nous.
 
