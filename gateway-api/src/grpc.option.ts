@@ -14,7 +14,7 @@ export const authGrpcOptions = (cs: ConfigService): ClientProviderOptions => ({
     transport: Transport.GRPC,
     options: {
       package: AUTH_PACKAGE_NAME,
-      url: '0.0.0.0:4003',
+      url: cs.get('AUTH_API_URL'),
       loader: {
         includeDirs: [join(__dirname, 'proto')],
       },
@@ -26,7 +26,7 @@ export const userGrpcOptions = (cs: ConfigService): ClientProviderOptions => ({
   name: USER_SERVICE_NAME,
   transport: Transport.GRPC,
   options: {
-    url: '0.0.0.0:4002',
+    url: cs.get('USER_API_URL'),
     package: USER_PACKAGE_NAME,
     loader: {
       includeDirs: [join(__dirname, 'proto')],
@@ -39,7 +39,7 @@ export const productGrpcOptions = (cs: ConfigService): ClientProviderOptions => 
   name: PRODUCT_CR_UD_SERVICE_NAME,
   transport: Transport.GRPC,
   options: {
-    url: '0.0.0.0:3010',
+    url: cs.get('PRODUCT_API_URL'),
     package: PRODUCT_PACKAGE_NAME,
     loader: {
       includeDirs: [join(__dirname, 'proto')],
@@ -52,7 +52,7 @@ export const shopGrpcOptions = (cs: ConfigService): ClientProviderOptions => ({
   name: SHOP_CR_UD_SERVICE_NAME,
   transport: Transport.GRPC,
   options: {
-    url: '0.0.0.0:3009',
+    url: cs.get('SHOP_API_URL'),
     package: SHOP_PACKAGE_NAME,
     loader: {
       includeDirs: [join(__dirname, 'proto')],
