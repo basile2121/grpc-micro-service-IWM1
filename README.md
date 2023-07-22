@@ -28,7 +28,7 @@ Pour le projet nous avons décidé de mettre en place un Gateway qui appelles no
 - product-api
 - shop-api
 
-![image-20230722182316449](C:\Users\basil\AppData\Roaming\Typora\typora-user-images\image-20230722182316449.png)
+![Archi](https://github.com/basile2121/grpc-micro-service-IWM1/blob/develop/doc/architecture.png)
 
 
 
@@ -214,13 +214,17 @@ npx prisma generate
 
 Pour tester nous avons fais des collections Postman. 
 
-Celle de gateway-api : 
+Celle de gateway-api : ![Postman](https://github.com/basile2121/grpc-micro-service-IWM1/blob/develop/doc/MicroService Gateway.postman_collection.json)
 
 Pour la collection des micro-services nous ne pouvons pas l'exporter mais si vous le souhaiter nous pouvons vous la partagez par mail. Contactez-nous.
 
 ### Quelques captures d'écrans :
 
+![Auth_Login](https://github.com/basile2121/grpc-micro-service-IWM1/blob/develop/doc/Auth_Login.png)
 
+![Product_Get](https://github.com/basile2121/grpc-micro-service-IWM1/blob/develop/doc/Product_Get.png)
+
+![Shop_Add](https://github.com/basile2121/grpc-micro-service-IWM1/blob/develop/doc/Shop_Add.png)
 
 ### Problèmes : 
 
