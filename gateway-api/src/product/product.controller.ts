@@ -9,13 +9,12 @@ import {
     GetProductRequest,
     GetProductResponse,
     PRODUCT_CR_UD_SERVICE_NAME,
-    PRODUCT_PACKAGE_NAME,
     ProductCRUDServiceClient,
     UpdateProductRequest,
     UpdateProductResponse
 } from '../stubs/product/product';
 import { Request } from 'express';
-import {GrpcAuthGuard} from "../auth/auth.guard";
+import {AuthGuard} from "../auth/auth.guard";
 
 @Controller('product')
 export class ProductController implements OnModuleInit {
@@ -29,7 +28,7 @@ export class ProductController implements OnModuleInit {
     }
 
     @Post()
-    @UseGuards(GrpcAuthGuard)
+    @UseGuards(AuthGuard)
     private async createProduct(@Req() req: Request): Promise<Observable<AddProductResponse>> {
         const body: AddProductRequest = req.body;
 
@@ -37,7 +36,7 @@ export class ProductController implements OnModuleInit {
     }
 
     @Get()
-    @UseGuards(GrpcAuthGuard)
+    @UseGuards(AuthGuard)
     private async getProducts(@Req() req: Request): Promise<Observable<GetProductResponse>> {
         const body: GetProductRequest = req.body;
 
@@ -45,7 +44,7 @@ export class ProductController implements OnModuleInit {
     }
 
     @Put()
-    @UseGuards(GrpcAuthGuard)
+    @UseGuards(AuthGuard)
     private async updateProduct(@Req() req: Request): Promise<Observable<UpdateProductResponse>> {
         const body: UpdateProductRequest = req.body;
 
@@ -53,7 +52,7 @@ export class ProductController implements OnModuleInit {
     }
 
     @Delete()
-    @UseGuards(GrpcAuthGuard)
+    @UseGuards(AuthGuard)
     private async deleteProduct(@Req() req: Request): Promise<Observable<DeleteProductResponse>> {
         const body: DeleteProductRequest = req.body;
 

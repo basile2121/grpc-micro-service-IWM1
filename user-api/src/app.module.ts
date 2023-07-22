@@ -9,7 +9,6 @@ import * as Joi from 'joi';
 import { HealthModule } from './health/health.module';
 import { AuthModule } from './auth/auth.module';
 import { OpenTelemetryModule } from '@metinseylan/nestjs-opentelemetry';
-import { opentelemetryConfig } from './tracing';
 import { LoggerModule } from 'nestjs-pino';
 
 const envSchema = Joi.object({
@@ -38,11 +37,6 @@ const envSchema = Joi.object({
       ignoreEnvFile: process.env.NODE_ENV === 'production',
       validationSchema: envSchema,
       isGlobal: true,
-    }),
-    OpenTelemetryModule.forRootAsync({
-      imports: [ConfigModule],
-      inject: [ConfigService],
-      useFactory: (cs: ConfigService) => opentelemetryConfig(cs),
     }),
     LoggerModule.forRoot({
       pinoHttp: {

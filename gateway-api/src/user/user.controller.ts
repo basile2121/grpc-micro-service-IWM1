@@ -5,11 +5,11 @@ import {Observable} from "rxjs";
 import {
     FindRequest, FindResponse,
     RegisterRequest,
-    RegisterResponse, UpdateRequest, UpdateResponse, USER_PACKAGE_NAME,
+    RegisterResponse, UpdateRequest, UpdateResponse,
     USER_SERVICE_NAME,
     UserServiceClient,
 } from "../stubs/user/user";
-import {GrpcAuthGuard} from "../auth/auth.guard";
+import {AuthGuard} from "../auth/auth.guard";
 
 @Controller('user')
 export class UserController {
@@ -23,7 +23,6 @@ export class UserController {
     }
 
     @Post()
-    @UseGuards(GrpcAuthGuard)
     private async registerUser(@Req() req: Request): Promise<Observable<RegisterResponse>> {
         const body: RegisterRequest = req.body;
 
@@ -31,7 +30,7 @@ export class UserController {
     }
 
     @Get()
-    @UseGuards(GrpcAuthGuard)
+    @UseGuards(AuthGuard)
     private async findUser(@Req() req: Request): Promise<Observable<FindResponse>> {
         const body: FindRequest = req.body;
 
@@ -39,7 +38,7 @@ export class UserController {
     }
 
     @Put()
-    @UseGuards(GrpcAuthGuard)
+    @UseGuards(AuthGuard)
     private async updateUser(@Req() req: Request): Promise<Observable<UpdateResponse>> {
         const body: UpdateRequest = req.body;
 

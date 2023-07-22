@@ -2,12 +2,13 @@ import {Controller, Inject, Post, OnModuleInit, UseGuards, Req, Get, Delete, Put
 import { ClientGrpc } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 import { Request } from 'express';
-import {GrpcAuthGuard} from "../auth/auth.guard";
+import {AuthGuard} from "../auth/auth.guard";
 import {
+    AddShopProductRequest, AddShopProductResponse,
     AddShopRequest,
     AddShopResponse, DeleteShopRequest, DeleteShopResponse, GetShopRequest,
     GetShopResponse,
-    SHOP_CR_UD_SERVICE_NAME, SHOP_PACKAGE_NAME,
+    SHOP_CR_UD_SERVICE_NAME,
     ShopCRUDServiceController, UpdateShopRequest, UpdateShopResponse
 } from "../stubs/shop/shop";
 
@@ -23,7 +24,7 @@ export class ShopController implements OnModuleInit {
     }
 
     @Post()
-    @UseGuards(GrpcAuthGuard)
+    @UseGuards(AuthGuard)
     private async addShop(@Req() req: Request): Promise<AddShopResponse | Observable<AddShopResponse>> {
         const body: AddShopRequest = req.body;
 
@@ -31,7 +32,7 @@ export class ShopController implements OnModuleInit {
     }
 
     @Get()
-    @UseGuards(GrpcAuthGuard)
+    @UseGuards(AuthGuard)
     private async getShop(@Req() req: Request): Promise<GetShopResponse | Observable<GetShopResponse>> {
         const body: GetShopRequest = req.body;
 
@@ -39,7 +40,7 @@ export class ShopController implements OnModuleInit {
     }
 
     @Put()
-    @UseGuards(GrpcAuthGuard)
+    @UseGuards(AuthGuard)
     private async updateShop(@Req() req: Request): Promise<UpdateShopResponse | Observable<UpdateShopResponse>> {
         const body: UpdateShopRequest = req.body;
 
@@ -47,10 +48,17 @@ export class ShopController implements OnModuleInit {
     }
 
     @Delete()
-    @UseGuards(GrpcAuthGuard)
+    @UseGuards(AuthGuard)
     private async deleteShop(@Req() req: Request): Promise<DeleteShopResponse | Observable<DeleteShopResponse>> {
         const body: DeleteShopRequest = req.body;
 
         return this.svc.deleteShop(body);
+    }
+
+    @Post('addProduct')
+    private async addProductToShop(@Req() req: Request): Promise<AddShopProductResponse | Observable<AddShopProductResponse>> {
+        const body: AddShopProductRequest = req.body;
+
+        return this.svc.addShopProduct(body);
     }
 }

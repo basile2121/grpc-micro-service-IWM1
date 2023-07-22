@@ -4,7 +4,6 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
-import {AuthService} from "./auth/auth.service";
 import {ShopModule} from "./shop/shop.module";
 
 @Module({

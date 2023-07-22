@@ -1,14 +1,9 @@
-import {Global, Module} from '@nestjs/common';
+import {Module} from '@nestjs/common';
 import {UserController} from './user.controller';
-import {ClientsModule, Transport} from '@nestjs/microservices';
-import {PRODUCT_PACKAGE_NAME} from "../stubs/product/product";
-import {join} from "path";
-import {USER_PACKAGE_NAME, USER_SERVICE_NAME} from "../stubs/user/user";
+import {ClientsModule} from '@nestjs/microservices';
+import {USER_SERVICE_NAME} from "../stubs/user/user";
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import {userGrpcOptions} from "../grpc.option";
-import {AuthService} from "../auth/auth.service";
-import {AppModule} from "../app.module";
-import {AppService} from "../app.service";
 import {AuthModule} from "../auth/auth.module";
 
 @Module({

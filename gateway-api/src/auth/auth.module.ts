@@ -1,7 +1,7 @@
-import {Global, Module} from '@nestjs/common';
-import {ClientsModule, Transport} from '@nestjs/microservices';
+import {Module} from '@nestjs/common';
+import {ClientsModule} from '@nestjs/microservices';
 import { AuthService } from './auth.service';
-import {AUTH_PACKAGE_NAME, AUTH_SERVICE_NAME} from '../stubs/auth/auth';
+import {AUTH_SERVICE_NAME} from '../stubs/auth/auth';
 import { AuthController } from './auth.controller';
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import {authGrpcOptions} from "../grpc.option";

@@ -7,8 +7,7 @@ import { SHOP_PACKAGE_NAME } from './stubs/shop/shop';
 import { join } from 'path';
 import { addReflectionToGrpcConfig } from 'nestjs-grpc-reflection';
 import { ConfigService } from '@nestjs/config';
-import {PRODUCT_CR_UD_SERVICE_NAME, PRODUCT_PACKAGE_NAME} from "./stubs/product/product";
-import {ChannelCredentials} from "@grpc/grpc-js";
+import {PRODUCT_PACKAGE_NAME} from "./stubs/product/product";
 
 export default (cs: ConfigService): GrpcOptions => {
   return addReflectionToGrpcConfig({
@@ -21,11 +20,11 @@ export default (cs: ConfigService): GrpcOptions => {
       },
       protoPath: [join(__dirname, 'proto/shop/shop.proto')],
     },
-  });
+  } as GrpcOptions);
 };
 
 export const useProductGrpcOptions = (cs: ConfigService): ClientProviderOptions => ({
-    name: PRODUCT_CR_UD_SERVICE_NAME,
+    name: PRODUCT_PACKAGE_NAME,
     transport: Transport.GRPC,
     options: {
         url: cs.get('PRODUCT_API_URL'),

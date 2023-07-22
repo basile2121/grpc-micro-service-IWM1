@@ -1,11 +1,8 @@
-import { ChannelCredentials, ServerCredentials } from '@grpc/grpc-js';
 import { ConfigService } from '@nestjs/config';
 import {
   ClientProviderOptions,
-  GrpcOptions,
   Transport,
 } from '@nestjs/microservices';
-import { readFileSync } from 'fs';
 import { join } from 'path';
 import {AUTH_PACKAGE_NAME, AUTH_SERVICE_NAME} from './stubs/auth/auth';
 import {USER_PACKAGE_NAME, USER_SERVICE_NAME} from './stubs/user/user';

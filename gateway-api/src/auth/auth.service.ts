@@ -1,7 +1,7 @@
 import {Inject, Injectable, OnModuleInit} from '@nestjs/common';
 import {ClientGrpc} from '@nestjs/microservices';
 import {firstValueFrom} from 'rxjs';
-import {AUTH_PACKAGE_NAME, AUTH_SERVICE_NAME, AuthServiceClient, ValidateResponse} from 'src/stubs/auth/auth';
+import {AUTH_SERVICE_NAME, AuthServiceClient, ValidateResponse} from 'src/stubs/auth/auth';
 
 @Injectable()
 export class AuthService implements OnModuleInit {

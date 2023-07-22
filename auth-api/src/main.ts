@@ -1,8 +1,11 @@
+import './config/tracing';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import grpcOption from './grpc.option';
 import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
+import {HttpExceptionFilter} from "./filter/http-exception.filter";
+import {ValidationPipe} from "@nestjs/common";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,6 +20,9 @@ async function bootstrap() {
 
   const healthCheckPort = cs.get('HEALTH_PORT');
   await app.listen(healthCheckPort);
+
+  app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
 
   (async () => {
     logger.log(

@@ -2,7 +2,7 @@
 import { Body, Controller, Inject, OnModuleInit, Post, Put } from '@nestjs/common';
 import { ClientGrpc } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
-import {AuthServiceClient, AUTH_SERVICE_NAME, LoginRequest, LoginResponse, AUTH_PACKAGE_NAME} from '../stubs/auth/auth';
+import {AuthServiceClient, AUTH_SERVICE_NAME, LoginRequest, LoginResponse} from '../stubs/auth/auth';
 
 @Controller('auth')
 export class AuthController implements OnModuleInit {
