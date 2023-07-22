@@ -2,7 +2,7 @@
 
 ## 1. Contexte : 
 
-Pour ce projet nous avons décider de repartir de 0 pour mieux comprendre le fonctionnement des micro services et ne pas être perdu dans un projet dense comme celui donné en tant qu'exemple.
+Pour ce projet nous avons décidé de repartir de 0 pour mieux comprendre le fonctionnement des micros services et ne pas être perdus dans un projet dense comme celui donné en tant qu'exemple.
 
 **Ecole :** ESGI
 
@@ -19,7 +19,7 @@ Pour ce projet nous avons décider de repartir de 0 pour mieux comprendre le fon
 
 ## 2. Architecture
 
-Pour le projet nous avons décidé de mettre en place un Gateway qui appelles nos micro services via GRPC et qui sera lui même appelé par le client appellerais en HTTP. Cela permet au client de passer par un seul serveur pour accéder à l'ensemble des micro services. Cela nous permet également l'implémentation de l'authentification et du Guard à un seul endroit.
+Pour le projet nous avons décidé de mettre en place un Gateway qui appelle nos micros services via GRPC et qui sera lui-même appelé par le client appellerait en HTTP. Cela permet au client de passer par un seul serveur pour accéder à l'ensemble des micros services. Cela nous permet également l'implémentation de l'authentification et du Guard à un seul endroit.
 
 **Liste des micro services :** 
 
@@ -47,7 +47,7 @@ Exporter les fichiers proto :
 
 ## 3. Lancement du projet
 
-Par manque de temps et d'expérience nous n'avons pas pu mettre en place un docker pour lancer l'ensemble des micro service et leurs configuration. Il faut donc le faire manuellement.
+Par manque de temps et d'expérience nous n'avons pas pu mettre en place un docker pour lancer l'ensemble des micros services et leurs configurations. Il faut donc le faire manuellement.
 
 ### 3.1 Gateway API
 
@@ -186,7 +186,7 @@ npm run start:dev
 
 ## 4. Base de données
 
-Nous n'avons pas de schéma de données, ce qu'il faut savoir est que le shop peut avoir un produit via le champs ID
+Nous n'avons pas de schéma de données, ce qu'il faut savoir c'est que le shop peut avoir un produit via le champ productId
 
 Pour créer la base et le schéma de donnée :
 
@@ -206,19 +206,19 @@ npx prisma generate
 - CRUD pour le micro service Shop
 - Appelle du service Product dans Shop pour vérifier lors de l'ajout d'un produit dans un shop que le produit existe bien
 - Gateway-api
-- Observabilité : Trace des requêtes pour tout les micro-service avec Jaeger : http://localhost:16686/search
+- Observabilité : Trace des requêtes pour tous les micros services avec Jaeger : http://localhost:16686/search
 - Utilisation des RpcException pour la gestion d'erreur
-- Les services Auth et User viennent de architecture d'exemple, mais nous avons du les modifier légèrement
+- Les services Auth et User viennent de l'architecture d'exemple, mais nous avons dû les modifier légèrement
 
 Lancer Jaeger : docker-compose up -d à la racine du projet
 
 ## Test Postman
 
-Pour tester nous avons fais des collections Postman. 
+Pour tester nous avons fait des collections Postman. 
 
 Celle de gateway-api : https://github.com/basile2121/grpc-micro-service-IWM1/blob/develop/doc/MicroService Gateway.postman_collection.json
 
-Pour la collection des micro-services nous ne pouvons pas l'exporter mais si vous le souhaiter nous pouvons vous la partagez par mail. Contactez-nous.
+Pour la collection des micros services nous ne pouvons pas l'exporter mais si vous le souhaitez nous pouvons vous la partagez par mail. Contactez-nous.
 
 ### Quelques captures d'écrans :
 
@@ -228,7 +228,7 @@ Pour la collection des micro-services nous ne pouvons pas l'exporter mais si vou
 
 ![Shop_Add](https://github.com/basile2121/grpc-micro-service-IWM1/blob/develop/doc/Shop_Add.png)
 
-### Problèmes : 
+### Problème éventuel :
 
-Nous avons tout tester et tout fonctionne sur nos postes si vous avez un soucis hésitez pas à nous demander
+Nous avons tout testé et tout fonctionne sur nos postes si vous avez un souci n'hésitez pas à nous demander
 
