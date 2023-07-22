@@ -210,6 +210,8 @@ npx prisma generate
 - Utilisation des RpcException pour la gestion d'erreur
 - Les services Auth et User viennent de architecture d'exemple, mais nous avons du les modifier légèrement
 
+Lancer Jaeger : docker-compose up -d à la racine du projet
+
 ## Test Postman
 
 Pour tester nous avons fais des collections Postman. 
